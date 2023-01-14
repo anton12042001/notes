@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {RoutePath} from "../components/router";
 
 
-const Error = () => {
+const ErrorPage = () => {
     const navigate = useNavigate()
     const [counter,setCounter] = useState(5)
 
@@ -25,4 +25,4 @@ const Error = () => {
     );
 };
 
-export default Error;
+export default ErrorPage;

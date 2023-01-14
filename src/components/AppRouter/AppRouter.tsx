@@ -1,6 +1,6 @@
 import React from 'react';
-import {Routes, Route, Navigate} from 'react-router-dom'
-import {privateRoutes, RoutePath} from "../router";
+import {Route, Routes} from 'react-router-dom'
+import {privateRoutes} from "../router";
 import ErrorPage from "../../page/ErrorPage";
 
 
