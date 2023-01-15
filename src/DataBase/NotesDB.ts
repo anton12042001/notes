@@ -1,12 +1,14 @@
 import {Note} from "../types/types";
+import React from "react";
 
 
-export const addStickyNote = (db:IDBDatabase, message:string ) => {  //нахождение бд и создание заметки
-    let tx = db.transaction(['notes'], 'readwrite');
+export const addStickyNote = (db:IDBDatabase, message:string,setNotesList:React.Dispatch<React.SetStateAction<Note[]>> ) => {
+    let tx = db.transaction(['notes'], 'readwrite'); //нахождение бд и создание заметки
     let store = tx.objectStore('notes');
     let note = {text: message};
     store.add(note);
     tx.oncomplete = () => {
+        getAndDisplayNotes(setNotesList)
         alert("Заметка успешно создана")
     }
     tx.onerror = (e: Event) => {
@@ -17,20 +19,20 @@ export const addStickyNote = (db:IDBDatabase, message:string ) => {  //нахо�
 }
 
 
-export const submitNote = (messages:string) => {                      //вызов функции по создании заметки
-    const dbReq = indexedDB.open("MyDB", 3);
+export const submitNote = (messages:string,setNotesList:React.Dispatch<React.SetStateAction<Note[]>>) => {
+    const dbReq = indexedDB.open("MyDB", 3);             //вызов функции по создании заметки
     dbReq.onsuccess = (e: Event) => {
         if(e.target instanceof IDBOpenDBRequest ){
             let db = e.target.result;
-            addStickyNote(db, messages);
+            addStickyNote(db, messages,setNotesList);
         }
     }
 }
 
 
-export const getAndDisplayNotes = (setNotesList: React.Dispatch<React.SetStateAction<Note[]>>) => {   //Получение заметок с indexedDB
+export const getAndDisplayNotes = (setNotesList: React.Dispatch<React.SetStateAction<Note[]>>) => {
     const dbReq = indexedDB.open("MyDB", 3);
-    dbReq.onsuccess = (e: Event) => {
+    dbReq.onsuccess = (e: Event) => {                                  //Получение заметок с indexedDB
         if(e.target instanceof IDBOpenDBRequest ){
             let db = e.target.result;
             let tx = db.transaction(['notes'], 'readonly');

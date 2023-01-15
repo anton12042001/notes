@@ -9,7 +9,6 @@ import NoteListItem from "../NoteListItem/NoteListItem";
 const Sidebar = () => {
 
     const {notesList, setNotesList} = useContext(NotesContext)
-    console.log(notesList)
 
     useEffect(() => {
         getAndDisplayNotes(setNotesList)
