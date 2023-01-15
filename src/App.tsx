@@ -4,11 +4,14 @@ import AppRouter from "./components/AppRouter/AppRouter";
 import Header from "./components/Header/Header";
 import {Col, Container, Row} from "react-bootstrap";
 import {NotesContext} from "./context";
+import {Note} from "./types/types";
+
+
 
 
 const App = () => {
 
-    const [notesList,setNotesList] = useState([''])
+    const [notesList,setNotesList] = useState<Array<Note>>([])
 
 
     return (

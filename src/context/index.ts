@@ -1,10 +1,14 @@
 import {createContext} from "react"
+import {Note} from "../types/types";
+
 
 interface Context {
-    notesList:string[]
-    setNotesList: React.Dispatch<React.SetStateAction<string[]>>
+    notesList: {
+        text:string
+    }[]
+
+    setNotesList: React.Dispatch<React.SetStateAction<Note[]>>
 }
 
 
-
-    export const NotesContext = createContext({} as Context)
+export const NotesContext = createContext({} as Context)

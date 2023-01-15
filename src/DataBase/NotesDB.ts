@@ -1,3 +1,4 @@
+import {Note} from "../types/types";
 
 
 export const addStickyNote = (db:IDBDatabase, message:string ) => {  //нахождение бд и создание заметки
@@ -27,7 +28,7 @@ export const submitNote = (messages:string) => {                      //вызо
 }
 
 
-export const getAndDisplayNotes = (setNotesList: React.Dispatch<React.SetStateAction<string[]>>) => {               //Получение заметок с indexedDB
+export const getAndDisplayNotes = (setNotesList: React.Dispatch<React.SetStateAction<Note[]>>) => {   //Получение заметок с indexedDB
     const dbReq = indexedDB.open("MyDB", 3);
     dbReq.onsuccess = (e: Event) => {
         if(e.target instanceof IDBOpenDBRequest ){
@@ -35,7 +36,7 @@ export const getAndDisplayNotes = (setNotesList: React.Dispatch<React.SetStateAc
             let tx = db.transaction(['notes'], 'readonly');
             let store = tx.objectStore('notes');
             let req = store.openCursor();
-            let allNotes:Array<string> = [];
+            let allNotes:Array<Note> = [];
             req.onsuccess = (e:Event) => {
                 if(e.target instanceof IDBRequest ){
                     let cursor = e.target.result;
@@ -49,7 +50,6 @@ export const getAndDisplayNotes = (setNotesList: React.Dispatch<React.SetStateAc
             }
             req.onerror = (e) => {
                 if(e.target instanceof IDBTransaction ){
-                    console.log(e)
                     alert('error in cursor request ' + e.target.error);
                 }
             }

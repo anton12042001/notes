@@ -10,11 +10,12 @@ const HomePage = () => {
 
     useEffect(() => {
         const dbReq = indexedDB.open("MyDB", 3);
-        dbReq.onupgradeneeded = function (event: any) {
-            //todo поправить типы
-            const db = event.target.result;
-            console.log(db)
-            const notes = db.createObjectStore("notes", {autoIncrement: true});
+        dbReq.onupgradeneeded = function (e: Event) {
+            if(e.target instanceof IDBOpenDBRequest){
+                console.log(e)
+                const db = e.target.result;
+                const notes = db.createObjectStore("notes", {autoIncrement: true});
+            }
             dbReq.onerror = (event: any) => {
                 alert('error opening database ' + event.target.errorCode);
             }

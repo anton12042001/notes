@@ -27,9 +27,10 @@ const Header = () => {
                                 <button onClick={()  => submitNote(messages)} type="button" >Создать заметку</button>
                             </Nav>
                         </Container>
+                        <div>поиск</div>
                     </Navbar>
                 </div>
-                <div>поиск заметки</div>
+
             </div>
         </div>
     );
