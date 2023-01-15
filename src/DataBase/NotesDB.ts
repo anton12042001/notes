@@ -2,9 +2,8 @@
 
 export const addStickyNote = (db:IDBDatabase, message:string ) => {  //нахождение бд и создание заметки
     let tx = db.transaction(['notes'], 'readwrite');
-    console.log(tx)
     let store = tx.objectStore('notes');
-    let note = {text: message, timestamp: Date.now()};
+    let note = {text: message};
     store.add(note);
     tx.oncomplete = () => {
         alert("Заметка успешно создана")
@@ -17,12 +16,18 @@ export const addStickyNote = (db:IDBDatabase, message:string ) => {  //нахо�
 }
 
 
-export const submitNone = (messages:string) => {
-    const dbReq = indexedDB.open("MyDB", 3); //вызов функции по создании заметки
+export const submitNote = (messages:string) => {                      //вызов функции по создании заметки
+    const dbReq = indexedDB.open("MyDB", 3);
     dbReq.onsuccess = (e: Event) => {
+        console.log(e)
         if(e.target instanceof IDBOpenDBRequest ){
             let db = e.target.result;
             addStickyNote(db, messages);
         }
     }
 }
+
+
+
+
+

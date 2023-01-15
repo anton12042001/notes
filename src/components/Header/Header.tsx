@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Container, Nav, Navbar} from "react-bootstrap";
-import {submitNone} from "../../DataBase/NotesDB";
+import {submitNote} from "../../dataBase/NotesDB";
 
 
 
@@ -24,7 +24,7 @@ const Header = () => {
                                 <input type="text" id="inputPassword5"
                                        aria-describedby="passwordHelpBlock"
                                        onChange={(e) => setMessages(e.target.value)}/>
-                                <button onClick={()  => submitNone(messages)} type="button" >Создать заметку</button>
+                                <button onClick={()  => submitNote(messages)} type="button" >Создать заметку</button>
                             </Nav>
                         </Container>
                     </Navbar>
