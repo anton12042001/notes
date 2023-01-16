@@ -1,1 +1,4 @@
-export type Note = { text: string }
+export type Note = {
+    title:string
+    text: string
+}

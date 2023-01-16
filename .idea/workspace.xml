@@ -33,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Introduction-to-typescript-user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../quiz" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -47,6 +47,7 @@
       <recent name="C:\Users\ahtoh\WebstormProjects\app\notes\src\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ahtoh\WebstormProjects\app\notes\src\components" />
       <recent name="C:\Users\ahtoh\WebstormProjects\app\notes\src" />
     </key>
   </component>
@@ -64,7 +65,8 @@
       <workItem from="1673659178070" duration="2167000" />
       <workItem from="1673691479478" duration="11983000" />
       <workItem from="1673745144035" duration="3007000" />
-      <workItem from="1673756148871" duration="17100000" />
+      <workItem from="1673756148871" duration="19375000" />
+      <workItem from="1673851564033" duration="20401000" />
     </task>
     <servers />
   </component>
