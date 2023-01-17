@@ -15,6 +15,7 @@ const CreateNewNotesForm = ({handleClose}:any) => {
 
     const {notesList, setNotesList} = useContext(NotesContext)
 
+
     const {
         register,
         handleSubmit,

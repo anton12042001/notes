@@ -8,12 +8,10 @@ const AppPage = () => {
     return (
         <div>
             <Header/>
-            <Container>
-                <Row>
-                    <Col><Sidebar/></Col>
-                    <Col><Outlet/></Col>
-                </Row>
-            </Container>
+            <div className="d-flex w-100">
+                <Sidebar/>
+                <Outlet/>
+            </div>
         </div>
     );
 };

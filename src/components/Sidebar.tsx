@@ -13,7 +13,7 @@ const Sidebar = () => {
     }, [])
 
     return (
-        <div className="col-3 border-end p-2">
+        <div className=" col-2 border-end p-2">
             {notesList.map((n,index) => <NoteListItem title={n.element.title} key={index} id={n.key}/>)}
 
         </div>

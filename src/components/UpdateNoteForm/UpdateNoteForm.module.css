@@ -1,0 +1,19 @@
+.updateNoteInputTitle{
+    width: 100%;
+    height: 125px;
+    border: none;
+    font-weight: bold;
+}
+.updateNoteInputTitle:focus{
+    border: none;
+    outline: none;
+}
+.updateNoteInputText{
+    width: 100%;
+    height: 125px;
+    border: none;
+}
+.updateNoteInputText:focus{
+    border: none;
+    outline: none;
+}

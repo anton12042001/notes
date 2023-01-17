@@ -32,10 +32,6 @@ const Header = () => {
                                     </Modal.Header>
                                     <Modal.Body><CreateNewNotesForm handleClose={handleClose}/></Modal.Body>
                                 </Modal>
-                                {params.id ? <Button
-                                    onClick={() => deleteNoteByKey(Number(params.id),setNotesList)}
-                                    variant="primary">Удалить текущую заметку</Button> : <div></div>}
-
                             </Nav>
                         </Container>
                         <div>поиск</div>

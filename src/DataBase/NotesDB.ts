@@ -1,6 +1,7 @@
 import {CurrentNote, Note} from "../types/types";
 import React from "react";
 import {DataProps} from "../components/createNewNotesForm";
+import {DataUpdateNoteProps} from "../components/UpdateNoteForm/UpdateNoteForm";
 
 
 export const addStickyNote = (db: IDBDatabase, data: DataProps, setNotesList: React.Dispatch<React.SetStateAction<Note[]>>) => {
@@ -89,6 +90,43 @@ export const deleteNoteByKey = (id: number, setNotesList: React.Dispatch<React.S
             let store = tx.objectStore('notes');
             store.delete(id)
             getAndDisplayNotes(setNotesList)
+        }
+    }
+}
+
+export const updateNoteByKey = (data:DataUpdateNoteProps,id:number) => {
+
+
+    const dbReq = indexedDB.open("MyDB", 3);       //изменение заметки
+    dbReq.onsuccess = (e: Event) => {
+        if (e.target instanceof IDBRequest) {
+            let db = e.target.result;
+            let tx = db.transaction(['notes'], 'readwrite');
+            let store = tx.objectStore('notes');
+            let req = store.openCursor(id);
+            req.onsuccess = (e: Event) => {
+                if (e.target instanceof IDBRequest) {
+                    const cursor = e.target.result;
+                    const obj = {
+                        title:data.title,
+                        text:data.text
+                    };
+                    if(cursor){
+                        const request = cursor.update(obj);
+                        request.onsuccess = function(){
+                            alert("Изменено")
+                        }
+                    }
+                    else{
+                        console.log("fin mise a jour");
+                    }
+                }
+            }
+            req.onerror = (e:Event) => {
+                if (e.target instanceof IDBTransaction) {
+                    console.log("case if have an error");
+                }
+            }
         }
     }
 }
