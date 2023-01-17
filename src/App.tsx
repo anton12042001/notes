@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {BrowserRouter,Outlet} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter/AppRouter";
-import Header from "./components/Header";
 import {Col, Container, Row} from "react-bootstrap";
 import {NotesContext} from "./context";
 import {Note} from "./types/types";

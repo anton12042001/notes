@@ -11,8 +11,6 @@ interface Params {
 }
 
 
-
-
 const NotesPage = () => {
 
     const {currentNote, setCurrentNote} = useContext(NotesContext)
@@ -20,9 +18,13 @@ const NotesPage = () => {
 
 
     useEffect(() => {
-        getNotesByKey((Number(params.id) + 1 ),setCurrentNote)
-    },[params.id])
+        getNotesByKey((Number(params.id)), setCurrentNote)
+    }, [params.id])
 
+
+    if (!currentNote) {
+        return <div>Загрузка...</div>
+    }
 
     return (
         <div>

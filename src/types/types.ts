@@ -1,4 +1,14 @@
 export type Note = {
-    title:string
-    text: string
+    key:number
+    element:{
+        title:string
+        text: string
+    }
 }
+export type CurrentNote = {
+    title:string
+    text:string
+}
+
+
+
