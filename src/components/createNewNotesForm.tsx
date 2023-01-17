@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {FieldValue, useForm} from "react-hook-form";
 import {submitNote} from "../dataBase/NotesDB";
 import {NotesContext} from "../context";
+import {Button, Modal} from "react-bootstrap";
 
 
 export interface DataProps {
@@ -10,7 +11,7 @@ export interface DataProps {
 }
 
 
-const CreateNewNotesForm = () => {
+const CreateNewNotesForm = ({handleClose}:any) => {
 
     const {notesList, setNotesList} = useContext(NotesContext)
 
@@ -40,7 +41,16 @@ const CreateNewNotesForm = () => {
                            type="text" id="inputPassword5"
                            aria-describedby="passwordHelpBlock"/>
                 </div>
-                <button>Создать заметку</button>
+
+                <Modal.Footer>
+                    <Button  variant="secondary" onClick={handleClose}>
+                        Закрыть
+                    </Button>
+                    <Button type={"submit"} variant="primary" onClick={handleClose}>
+                        Сохранить
+                    </Button>
+                </Modal.Footer>
+
             </form>
         </div>
     );

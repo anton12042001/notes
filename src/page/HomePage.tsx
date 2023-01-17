@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Container, Row} from "react-bootstrap";
-import Sidebar from "../components/Sidebar";
 
 
 const HomePage = () => {
@@ -29,7 +28,6 @@ const HomePage = () => {
         <div>
             <Container>
                 <Row>
-                    <Sidebar/>                                        //todo вынести сайд бар из всех компонентов
                     <Col>Выберите какую-нибудь заметку из сайдбара слева!</Col>
                 </Row>
             </Container>
