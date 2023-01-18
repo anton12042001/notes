@@ -12,7 +12,6 @@ const App = () => {
     const [currentNote, setCurrentNote] = useState({title:'', text:''})
     const [searchValue,setSearchValue] = useState('')
 
-
     return (
         <BrowserRouter>
             <NotesContext.Provider value={{

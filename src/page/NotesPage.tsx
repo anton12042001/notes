@@ -30,10 +30,12 @@ const NotesPage = () => {
     }
 
     return (
-        <div className='w-100' >
+        <div className='w-100'  style={{maxWidth:1050, }} >
             <div className=' h-100 w-100 p-3' style={{minHeight:"100vh"}}>
-                {(!editMode) && <Button  variant="primary" onClick={() => setEditMode(true)}>Редактировать</Button> }
-                <DeletionConfirmationModal/>
+                <div className="d-flex gap-2" >
+                    {(!editMode) && <Button  variant="primary" onClick={() => setEditMode(true)}>Редактировать</Button> }
+                    <DeletionConfirmationModal/>
+                </div>
                 {editMode ? <UpdateNoteForm currentNote={currentNote} setEditMode={setEditMode} />
                     : <div><CurrentNote title={currentNote.title} text={currentNote.text}/></div> }
             </div>

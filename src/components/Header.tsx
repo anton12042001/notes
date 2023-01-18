@@ -6,7 +6,7 @@ import {NotesContext} from "../context";
 
 
 const Header = () => {
-    const {currentNote,setSearchValue} = useContext(NotesContext)
+    const {currentNote, setSearchValue} = useContext(NotesContext)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -34,14 +34,16 @@ const Header = () => {
                                     <Modal.Header closeButton>
                                         <Modal.Title>Создание заметки</Modal.Title>
                                     </Modal.Header>
-                                    <Modal.Body><CreateNewNotesForm handleClose={handleClose}/></Modal.Body>
+                                    <Modal.Body>
+                                        <CreateNewNotesForm handleClose={handleClose}/>
+                                    </Modal.Body>
                                 </Modal>
                             </Nav>
                         </Container>
                         <div>
                             <Form className="d-flex">
                                 <Form.Control
-                                    onChange={(e) => setSearchValue(e.target.value) }
+                                    onChange={(e) => setSearchValue(e.target.value)}
                                     type="search"
                                     placeholder="Поиск заметки"
                                     className="me-2"

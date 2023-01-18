@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, useContext} from 'react';
+import React, {Dispatch, SetStateAction, useContext, useEffect, useState} from 'react';
 import {NotesContext} from "../../context";
 import {FieldValue, useForm} from "react-hook-form";
 import {DataProps} from "../createNewNotesForm";
@@ -10,18 +10,19 @@ export interface DataUpdateNoteProps {
     title: string
     text: string
 }
+
 interface UpdateNoteFormProps {
-    setEditMode:Dispatch<SetStateAction<boolean>>
-    currentNote:{
-        title:string
-        text:string
+    setEditMode: Dispatch<SetStateAction<boolean>>
+    currentNote: {
+        title: string
+        text: string
     }
 }
 
-const UpdateNoteForm = ({setEditMode,currentNote}:UpdateNoteFormProps) => {
+const UpdateNoteForm = ({setEditMode, currentNote}: UpdateNoteFormProps) => {
 
     const params = useParams<keyof Params>() as Params
-    const {setNotesList,setCurrentNote} = useContext(NotesContext)
+    const {setNotesList, setCurrentNote} = useContext(NotesContext)
 
     const {
         register,
@@ -29,29 +30,31 @@ const UpdateNoteForm = ({setEditMode,currentNote}:UpdateNoteFormProps) => {
         reset
     } = useForm();
 
-    
     const onSubmit = (data: FieldValue<DataUpdateNoteProps>) => {
-        updateNoteByKey(data as DataProps, Number(params.id),setCurrentNote,setNotesList)
+        updateNoteByKey(data as DataProps, Number(params.id), setCurrentNote, setNotesList)
         setEditMode(false)
         reset()
     }
 
 
-
     return (
         <div>
-            <form onSubmit={handleSubmit(data => {onSubmit(data)})}>
+            <form onSubmit={handleSubmit(data => {
+                onSubmit(data)
+            })}>
                 <div className="fw-bold fs-3 p-2">
-                    <input  className={cl.updateNoteInputTitle}  {...register("title")}
-                        defaultValue={currentNote.title}
+                    <input className={cl.updateNoteInputTitle}  {...register("title")}
+                           defaultValue={currentNote.title}
+
                            type="text"/>
                 </div>
                 <div>
                     <input className={cl.updateNoteInputText}  {...register("text")}
-                            defaultValue={currentNote.text}
+                           defaultValue={currentNote.text}
+
                            type="text"/>
                 </div>
-                <button>Редактировать заметку</button>
+                <button>Закончить редактирование</button>
             </form>
         </div>
     );

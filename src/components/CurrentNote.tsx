@@ -11,11 +11,11 @@ interface CurrentNote {
 const CurrentNote = ({title,text}:CurrentNote) => {
 
     return (
-        <div className="mt-5 d-flex flex-column">
+        <div className="mt-5 d-flex flex-column text-wrap">
             <div className="fs-3 p-2">
                 <ReactMarkdown>{title}</ReactMarkdown>
             </div>
-            <div className="p-2">
+            <div className="p-2 text-break">
                 <ReactMarkdown>{text}</ReactMarkdown>
             </div>
         </div>

@@ -32,15 +32,17 @@ const CreateNewNotesForm = ({handleClose}:any) => {
             <form onSubmit={handleSubmit(data => {
                 onSubmit(data)
             })}>
-                <div>
-                    <input placeholder={"Введите название"} {...register("title")}
-                           type="text" id="inputPassword5"
-                           aria-describedby="passwordHelpBlock"/>
-                </div>
-                <div>
-                    <input placeholder={"Введите тело"} {...register("text")}
-                           type="text" id="inputPassword5"
-                           aria-describedby="passwordHelpBlock"/>
+                <div className='d-flex flex-column align-items-center gap-2 p-2 '>
+                    <div>
+                        <input placeholder={"Введите название"} {...register("title")}
+                               type="text" id="inputPassword5"
+                               aria-describedby="passwordHelpBlock"
+                               style={{width:250}}/>
+                    </div>
+                    <div>
+                        <textarea placeholder={"Введите тело"} {...register("text")} id="inputPassword5"
+                               aria-describedby="passwordHelpBlock" style={{width:250,resize:"none",height:150}} />
+                    </div>
                 </div>
 
                 <Modal.Footer>

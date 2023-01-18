@@ -23,7 +23,7 @@ const NoteListItem = ({title, id}: NoteListItemProps) => {
                     className="btn btn-light w-60 "
                     style={{width: 125, background: Number(params.id) === id ? "#c6c7c8" : "#eaeaea"}}
             >
-                {title.replace(/[^a-zа-яё\s]/gi, '')}
+                {title.replace(/[^a-zа-яё\s\d\.\,]/gi, '')}
             </button>
         </div>
     );
