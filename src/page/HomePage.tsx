@@ -22,7 +22,10 @@ const HomePage = () => {
             }
             dbReq.onsuccess = function() {
                 let db = dbReq.result;
-                console.log(db)
+                if(e.target instanceof IDBOpenDBRequest){
+                    const db = e.target.result;
+                    const notes = db.createObjectStore("notes", {autoIncrement: true});
+                }
             };
         };
     }, [])

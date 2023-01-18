@@ -1,4 +1,6 @@
 import React from 'react';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+
 
 
 interface CurrentNote {
@@ -10,11 +12,13 @@ const CurrentNote = ({title,text}:CurrentNote) => {
 
     return (
         <div className="mt-5 d-flex flex-column">
-            <div className="fw-bold fs-3 p-2">{title}</div>
-            <div className="p-2">{text}</div>
-
+            <div className="fs-3 p-2">
+                <ReactMarkdown>{title}</ReactMarkdown>
+            </div>
+            <div className="p-2">
+                <ReactMarkdown>{text}</ReactMarkdown>
+            </div>
         </div>
-
     );
 };
 
