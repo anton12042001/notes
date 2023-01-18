@@ -4,6 +4,30 @@ import {DataProps} from "../components/createNewNotesForm";
 import {DataUpdateNoteProps} from "../components/UpdateNoteForm/UpdateNoteForm";
 
 
+
+
+export const openDB = () => {    //Открытие базы данных
+    const dbReq = indexedDB.open("MyDB", 3);
+    dbReq.onupgradeneeded = function (e: Event) {
+        if(e.target instanceof IDBOpenDBRequest){
+            const db = e.target.result;
+            const notes = db.createObjectStore("notes", {autoIncrement: true})
+        }
+        dbReq.onerror = (e: Event) => {
+            if(e.target instanceof IDBTransaction ){
+                alert('error opening database ' + e.target.error);
+            }
+        }
+        dbReq.onsuccess = function(e:Event) {
+            if(e.target instanceof IDBOpenDBRequest){
+                const  db = e.target.result;
+            }
+        };
+    };
+}
+
+
+
 export const addStickyNote = (db: IDBDatabase, data: DataProps, setNotesList: React.Dispatch<React.SetStateAction<Note[]>>) => {
     let tx = db.transaction(['notes'], 'readwrite'); //нахождение бд и создание заметки
     let store = tx.objectStore('notes');

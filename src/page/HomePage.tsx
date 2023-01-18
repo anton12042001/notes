@@ -6,31 +6,6 @@ import {Col, Container, Row} from "react-bootstrap";
 const HomePage = () => {
 
 
-    useEffect(() => {
-        const dbReq = indexedDB.open("MyDB", 3);
-        dbReq.onupgradeneeded = function (e: Event) {
-            console.log("Ща сработает")
-            if(e.target instanceof IDBOpenDBRequest){
-                const db = e.target.result;
-                const notes = db.createObjectStore("notes", {autoIncrement: true});
-            }
-
-            dbReq.onerror = (e: Event) => {
-                if(e.target instanceof IDBTransaction ){
-                    alert('error opening database ' + e.target.error);
-                }
-            }
-            dbReq.onsuccess = function() {
-                let db = dbReq.result;
-                if(e.target instanceof IDBOpenDBRequest){
-                    const db = e.target.result;
-                    const notes = db.createObjectStore("notes", {autoIncrement: true});
-                }
-            };
-        };
-    }, [])
-
-
 
 
     return (
