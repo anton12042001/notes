@@ -29,6 +29,7 @@ const UpdateNoteForm = ({setEditMode,currentNote}:UpdateNoteFormProps) => {
         reset
     } = useForm();
 
+    
     const onSubmit = (data: FieldValue<DataUpdateNoteProps>) => {
         updateNoteByKey(data as DataProps, Number(params.id),setCurrentNote,setNotesList)
         setEditMode(false)
