@@ -1,13 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Route, Routes} from 'react-router-dom'
 import {privateRoutes} from "../router";
 import ErrorPage from "../../page/ErrorPage";
-import {NotesContext} from "../../context";
 import AppPage from "../../page/AppPage";
 
 
 const AppRouter = () => {
-    const {notesList, setNotesList} = useContext(NotesContext)
 
     return (
         <Routes>

@@ -3,7 +3,6 @@ import {NotesContext} from "../../context";
 import {FieldValue, useForm} from "react-hook-form";
 import {DataProps} from "../createNewNotesForm";
 import cl from './UpdateNoteForm.module.css'
-import {Note} from "../../types/types";
 import {updateNoteByKey} from "../../dataBase/NotesDB";
 import {Params, useParams} from "react-router-dom";
 
@@ -22,7 +21,7 @@ interface UpdateNoteFormProps {
 const UpdateNoteForm = ({setEditMode,currentNote}:UpdateNoteFormProps) => {
 
     const params = useParams<keyof Params>() as Params
-    const {notesList, setNotesList} = useContext(NotesContext)
+    const {setNotesList,setCurrentNote} = useContext(NotesContext)
 
     const {
         register,
@@ -31,19 +30,16 @@ const UpdateNoteForm = ({setEditMode,currentNote}:UpdateNoteFormProps) => {
     } = useForm();
 
     const onSubmit = (data: FieldValue<DataUpdateNoteProps>) => {
-        updateNoteByKey(data as DataProps, Number(params.id))
+        updateNoteByKey(data as DataProps, Number(params.id),setCurrentNote,setNotesList)
         setEditMode(false)
         reset()
     }
 
 
 
-
     return (
         <div>
-            <form onSubmit={handleSubmit(data => {
-                onSubmit(data)
-            })}>
+            <form onSubmit={handleSubmit(data => {onSubmit(data)})}>
                 <div className="fw-bold fs-3 p-2">
                     <input  className={cl.updateNoteInputTitle}  {...register("title")}
                         defaultValue={currentNote.title}
@@ -53,10 +49,8 @@ const UpdateNoteForm = ({setEditMode,currentNote}:UpdateNoteFormProps) => {
                     <input className={cl.updateNoteInputText}  {...register("text")}
                             defaultValue={currentNote.text}
                            type="text"/>
-
                 </div>
                 <button>Редактировать заметку</button>
-
             </form>
         </div>
     );

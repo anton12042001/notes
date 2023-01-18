@@ -10,6 +10,7 @@ const App = () => {
 
     const [notesList, setNotesList] = useState<Array<Note>>([])
     const [currentNote, setCurrentNote] = useState({title:'', text:''})
+    const [searchValue,setSearchValue] = useState('')
 
 
     return (
@@ -18,7 +19,9 @@ const App = () => {
                 notesList,
                 setNotesList,
                 currentNote,
-                setCurrentNote
+                setCurrentNote,
+                searchValue,
+                setSearchValue
             }}>
                 <Container>
                     <Row>

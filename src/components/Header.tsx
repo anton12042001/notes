@@ -1,19 +1,23 @@
-import React, {useContext, useState} from 'react';
-import {Button, Container, Modal, Nav, Navbar} from "react-bootstrap";
+import React, {useContext, useEffect, useState} from 'react';
+import {Button, Container, Form, Modal, Nav, Navbar} from "react-bootstrap";
 import CreateNewNotesForm from "./createNewNotesForm";
-import {Params, useParams} from "react-router-dom";
-import {deleteNoteByKey, updateNoteByKey} from "../dataBase/NotesDB";
+import {useNavigate} from "react-router-dom";
 import {NotesContext} from "../context";
 
 
 const Header = () => {
-    const {currentNote, setCurrentNote,setNotesList} = useContext(NotesContext)
-
+    const {currentNote,setSearchValue} = useContext(NotesContext)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const navigate = useNavigate()
 
-    const params = useParams<keyof Params>() as Params;
+    useEffect(() => {
+        if (!currentNote) {
+            navigate('/home')
+        }
+
+    }, [currentNote])
 
 
     return (
@@ -34,7 +38,17 @@ const Header = () => {
                                 </Modal>
                             </Nav>
                         </Container>
-                        <div>поиск</div>
+                        <div>
+                            <Form className="d-flex">
+                                <Form.Control
+                                    onChange={(e) => setSearchValue(e.target.value) }
+                                    type="search"
+                                    placeholder="Поиск заметки"
+                                    className="me-2"
+                                    aria-label="Search"
+                                />
+                            </Form>
+                        </div>
                     </Navbar>
                 </div>
 

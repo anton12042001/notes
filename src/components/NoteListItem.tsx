@@ -18,8 +18,13 @@ const NoteListItem = ({title, id}: NoteListItemProps) => {
     return (
 
         <div className="p-2">
-            <button onClick={() => navigate(`/notes/${id}`)} type="button" className="btn btn-light w-60 "
-                    style={{width: 125, background: Number(params.id) === id ? "#c6c7c8" : "#eaeaea"}}>{title}</button>
+            <button onClick={() => navigate(`/notes/${id}`)}
+                    type="button"
+                    className="btn btn-light w-60 "
+                    style={{width: 125, background: Number(params.id) === id ? "#c6c7c8" : "#eaeaea"}}
+            >
+                {title}
+            </button>
         </div>
     );
 };

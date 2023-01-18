@@ -13,7 +13,7 @@ export interface DataProps {
 
 const CreateNewNotesForm = ({handleClose}:any) => {
 
-    const {notesList, setNotesList} = useContext(NotesContext)
+    const {setNotesList} = useContext(NotesContext)
 
 
     const {

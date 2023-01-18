@@ -17,6 +17,9 @@ interface Context {
         text: string
     }
     setCurrentNote: React.Dispatch<React.SetStateAction<CurrentNote>>
+
+    searchValue:string
+    setSearchValue:React.Dispatch<React.SetStateAction<string>>
 }
 
 

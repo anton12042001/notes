@@ -81,7 +81,7 @@ export const getNotesByKey = (id: number, setCurrentNote: React.Dispatch<React.S
     }
 }
 
-export const deleteNoteByKey = (id: number, setNotesList: React.Dispatch<React.SetStateAction<Note[]>>) => {
+export const deleteNoteByKey = (id: number, setNotesList: React.Dispatch<React.SetStateAction<Note[]>>,setCurrentNote:React.Dispatch<React.SetStateAction<CurrentNote>> ) => {
     const dbReq = indexedDB.open("MyDB", 3);       //удаление заметки
     dbReq.onsuccess = (e: Event) => {
         if (e.target instanceof IDBRequest) {
@@ -90,13 +90,12 @@ export const deleteNoteByKey = (id: number, setNotesList: React.Dispatch<React.S
             let store = tx.objectStore('notes');
             store.delete(id)
             getAndDisplayNotes(setNotesList)
+            getNotesByKey(id,setCurrentNote)
         }
     }
 }
 
-export const updateNoteByKey = (data:DataUpdateNoteProps,id:number) => {
-
-
+export const updateNoteByKey = (data:DataUpdateNoteProps,id:number,setCurrentNote:React.Dispatch<React.SetStateAction<CurrentNote>>,setNotesList:React.Dispatch<React.SetStateAction<Note[]>>) => {
     const dbReq = indexedDB.open("MyDB", 3);       //изменение заметки
     dbReq.onsuccess = (e: Event) => {
         if (e.target instanceof IDBRequest) {
@@ -115,6 +114,8 @@ export const updateNoteByKey = (data:DataUpdateNoteProps,id:number) => {
                         const request = cursor.update(obj);
                         request.onsuccess = function(){
                             alert("Изменено")
+                            getNotesByKey(id,setCurrentNote)
+                            getAndDisplayNotes(setNotesList)
                         }
                     }
                     else{
